@@ -136,7 +136,7 @@ local NameUser   = Hyper_Link_Name(data)
 if redis:get(marco.."lock_takkl"..msg.chat_id_) then 
 return sendMsg(msg.chat_id_,msg.id_,"🔓¦ تم بالتأكيد تفعيل تاك للكل    \n📮¦ بواسطه ⋙「 "..NameUser.." 」 \n✓" ) 
 else redis:set(marco.."lock_takkl"..msg.chat_id_,true)
-return sendMsg(msg.chat_id_,msg.id_,"🔓¦ تم تفعيل الحظر تاك للكل   \n📮¦ بواسطه ⋙「 "..NameUser.." 」 \n✓" ) 
+return sendMsg(msg.chat_id_,msg.id_,"🔓¦ تم تفعيل تاك للكل   \n📮¦ بواسطه ⋙「 "..NameUser.." 」 \n✓" ) 
 end
 end,{msg=msg})
 end
