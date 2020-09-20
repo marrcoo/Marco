@@ -81,7 +81,6 @@ else
 if ! screen -list | grep -q "marco"; then
 screen -S marco ./run R
 else
-screen -X -S marco quit
 screen -S marco ./run R
 fi
 fi
