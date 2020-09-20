@@ -4310,8 +4310,8 @@ end
 
 if redis:get(marco..'addrd_all:'..msg.chat_id_..msg.sender_user_id_) then -- استقبال الرد لكل المجموعات
 if not redis:get(marco..'allreplay:'..msg.chat_id_..msg.sender_user_id_) then -- استقبال كلمه الرد لكل المجموعات
-if utf8.len(msg.text) > 100 then 
-return sendMsg(msg.chat_id_,msg.id_,"📛¦ عذرا غير مسموح باضافه كلمه الرد باكثر من 100 حرف \n❕")
+if utf8.len(msg.text) > 30 then 
+return sendMsg(msg.chat_id_,msg.id_,"📛¦ عذرا غير مسموح باضافه كلمه الرد باكثر من 30 حرف \n❕")
 end
 redis:hdel(marco..'replay_photo:group:',msg.text)
 redis:hdel(marco..'replay_voice:group:',msg.text)
@@ -4506,8 +4506,8 @@ if msg.text then
 if redis:get(marco..'addrd:'..msg.chat_id_..msg.sender_user_id_) then -- استقبال الرد للمجموعه فقط
 
 if not redis:get(marco..'replay1'..msg.chat_id_..msg.sender_user_id_) then  -- كلمه الرد
-if utf8.len(msg.text) > 100 then 
-return sendMsg(msg.chat_id_,msg.id_,"📛¦ عذرا غير مسموح باضافه كلمه الرد باكثر من 100 حرف \n❕")
+if utf8.len(msg.text) > 30 then 
+return sendMsg(msg.chat_id_,msg.id_,"📛¦ عذرا غير مسموح باضافه كلمه الرد باكثر من 30 حرف \n❕")
 end
 redis:hdel(marco..'replay:'..msg.chat_id_,msg.text)
 redis:hdel(marco..'replay_photo:group:'..msg.chat_id_,msg.text)
