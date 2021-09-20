@@ -532,51 +532,15 @@ else
 print("The File Script.lua Not Runing in The Source amrko")
 end
 end
-
 function tdcli_update_callback(data)
-local msg = data.message_
+iio = 0
+msg = data.message_
 if data.ID == "UpdateMessageSendFailed" then 
 if msg and msg.sender_user_id_ then
 redis:srem(amrko..'users',msg.sender_user_id_)
 end
 elseif data.ID == "UpdateNewCallbackQuery" then
-local datab = data.payload_.data_ 
-local UserID = data.sender_user_id_
-local ChatID = data.chat_id_
-local dataid = data.message_id_
-
-local Text,UserJoin = datab:match("^(CheckRobotJoin:)(%d+)$")
-local UserJoin = tonumber(UserJoin)
-if Text == "CheckRobotJoin:" then
-local Adminn = false
-if UserID == SUDO_ID then 
-Adminn = true
-elseif redis:sismember(amrko..':SUDO_BOT:',UserID) then 
-Adminn = true
-elseif redis:sismember(amrko..':MONSHA_BOT:'..ChatID,UserID) then 
-Adminn = true
-elseif redis:sismember(amrko..':MONSHA_Group:'..ChatID,UserID) then 
-Adminn = true
-elseif redis:sismember(amrko..'owners:'..ChatID,UserID) then 
-Adminn = true
-elseif redis:sismember(amrko..'admins:'..ChatID,UserID) then 
-Adminn = true
-elseif UserID == UserJoin then 
-Adminn = true
-end	
-if Adminn then
-Restrict(ChatID,UserJoin,2)
-answerCallbackQuery(data.id_,"👍🏻|تم فك التقييد بنجاح والتأكد بانك لست روبوت ❤️",true)
-EditMsg(ChatID,dataid,"👍🏻|تم فك التقييد بنجاح والتأكد بانك لست روبوت ❤️")
-else
-answerCallbackQuery(data.id_,"عذرا انت لست الشخص المقيد او لا يوجد لديك صلاحيه الادارة , نعتذر منك",true)	
-end
-
-else
---	answerCallbackQuery(data.id_,"امر غير معرف",true)
-end
-
-
+UpdateNewQuery(data)
 elseif data.ID == "UpdateMessageSendSucceeded" then
 local msg = data.message_
 if msg.content_.text_ then
@@ -586,6 +550,7 @@ tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100'
 end
 
 end
+
 if Refresh_Start then
 Refresh_Start = false
 Start_Bot()
