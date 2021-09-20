@@ -189,7 +189,7 @@ local url , res = https.request(ApiToken..'/getChatAdministrators?chat_id='..msg
 local get = JSON.decode(url)
 for k,v in pairs(get.result) do
 if v.status == "creator" and v.user.first_name ~= "" then
-return sendMsg(msg.chat_id_,msg.id_,"المالك :\n["..v.user.first_name.."](t.me/"..(v.user.username or "amrkoK"))
+return sendMsg(msg.chat_id_,msg.id_,"المالك :\n["..v.user.first_name.."](t.me/"..(v.user.username or "F888w"))
 end
 end
 
@@ -207,7 +207,7 @@ mmmmm = arg.UserName:gsub("@","")
 sendMsg(arg.ChatID,arg.MsgID,"المالك :\n["..data.title_.."](t.me/"..mmmmm..")")
 end,{ChatID=msg.chat_id_,MsgID=msg.id_,UserName=info.username})
 else
-sendMsg(msg.chat_id_,msg.id_,'المالك :\n['..info.username..'](t.me/amrkoK)  \n')
+sendMsg(msg.chat_id_,msg.id_,'المالك :\n['..info.username..'](t.me/F888w)  \n')
 end
 
 break
